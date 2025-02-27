@@ -47,7 +47,7 @@ This isn't particularly useful aside for testing, as you're better off using
 `python run` or `uv run` directly. But, maybe someone needs it..
 
 ```sh
-deno run --allow-ffi --allow-env --allow-read --allow-run jsr:@orgsoft/py/mod.ts <python_module>
+deno run --allow-ffi --allow-env --allow-read --allow-run jsr:@orgsoft/py <python_module>
 ```
 
 You could also install `@orgsoft/py` so it can be accessed quickly:
