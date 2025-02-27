@@ -1,5 +1,5 @@
 /**
- * NOTE: you MUST run
+ * NOTE: you should run
  * ```
  * uv init
  * uv sync
@@ -20,22 +20,22 @@ let py: typeof import("jsr:@denosaurs/python@0.4") | undefined;
  * Most of the time, you will use `import` on this object,
  * and also make use of some common built-ins attached to
  * this object, such as `str`, `int`, `tuple`, etc.
- * 
- * NOTE: You MUST source a python virtual environment before using 
+ *
+ * NOTE: You should source a python virtual environment before using
  * this module.
- * 
+ *
  * If you are using uv, you can run:
  * ```
  * uv init
  * uv sync
  * source .venv/bin/activate
  * ```
- * 
+ *
  * If you are using a different venv path, run:
  * ```
  * source {MY_PYTHON_PROJECT_PATH}/.venv/bin/activate
  * ```
- * 
+ *
  * Learn more about uv at https://docs.astral.sh/uv/
  */
 export const getPython = async (): Promise<
@@ -47,36 +47,54 @@ export const getPython = async (): Promise<
 
   const venvDir = Deno.env.get("VIRTUAL_ENV");
   if (!venvDir) {
-    throw new Error(
-      `\n
-      \`VIRTUAL_ENV\` is not set. In order to use @orgsoft/py, you must first
-      activate a virtual environment in your active shell with:
+    if (Deno.env.get("ORGSOFT_PY_NO_WARNING") !== "true") {
+      console.warn(
+        `%c
+⚠️ Warning: \`VIRTUAL_ENV\` is not set. In order to use @orgsoft/py as recommended,
+you should first activate a virtual environment in your active shell with:
 
-      \`\`\`sh
-      source .venv/bin/activate
-      \`\`\`
-      
-      If you are using a different venv path, run:
+%c\`\`\`sh
+source .venv/bin/activate
+\`\`\`%c
 
-      \`\`\`sh
-      source {MY_PYTHON_PROJECT_PATH}/.venv/bin/activate
-      \`\`\`
+If you are using a different venv path, run:
 
-      We recommend using uv to create your virtual environment. 
+%c\`\`\`sh
+source {MY_PYTHON_PROJECT_PATH}/.venv/bin/activate
+\`\`\`%c
 
-      Get uv from: https://docs.astral.sh/uv/
-      
-      Then, run:
+We recommend using uv to create your virtual environment. 
 
-      \`\`\`sh
-      uv init
-      uv sync
-      source .venv/bin/activate
-      \`\`\`
+Get uv from: https://docs.astral.sh/uv/
 
-      to create and activate your virtual environment.
+Then, run:
+
+%c\`\`\`sh
+uv init
+uv sync
+source .venv/bin/activate
+\`\`\`%c
+
+to create and activate your virtual environment.
+
+You can disable this warning by setting the environment variable:
+
+%c\`\`\`sh
+ORGSOFT_PY_NO_WARNING=true
+\`\`\`
       `,
+      "color:yellow",
+      "color:purple",
+      "color:yellow",
+      "color:purple",
+      "color:yellow",
+      "color:purple",
+      "color:yellow",
+      "color:purple",
     );
+    }
+
+    return await import("jsr:@denosaurs/python@0.4");
   }
 
   // We need to bootstrap the python path with an existing python command

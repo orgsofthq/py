@@ -63,7 +63,7 @@ Replace `denopy` with any alias name you'd like.
 
 [Deno](https://deno.com) must be installed to use.
 
-You also must source a virtual environment to use `@orgsoft/py`:
+You should source a virtual environment to properly use `@orgsoft/py`:
 
 ```sh
 source .venv/bin/activate
