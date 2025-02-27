@@ -14,6 +14,3 @@
 !*.py
 !*.toml
 !*.lock
-!example
-!.gitignore
-!.python-version

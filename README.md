@@ -2,8 +2,13 @@
 
 A Deno Python wrapper that supports using virtual environments like from `uv`.
 
-This lets you easily call Python modules from Deno code in a efficient,
-portable, and low-setup way.
+This lets you easily call Python modules from Deno code: in a portable, simple,
+and low setup way.
+
+`@orgsoft/py` is based on
+[jsr:@denosaurs/python](https://jsr.io/@denosaurs/python) and its native
+Python/C bindings. You can read more about that and further documentation on
+their [GitHub repo](https://github.com/denosaurs/deno_python).
 
 ## Usage
 
@@ -23,7 +28,17 @@ const result = await module.main();
 console.log(result);
 
 # Run raw python code
-python.run("print(\"hello world\"));
+python.run("print('hello world'));
+
+# Continued...
+const np = python.import("numpy");
+const plt = python.import("matplotlib.pyplot");
+
+const xpoints = np.array([1, 8]);
+const ypoints = np.array([3, 10]);
+
+plt.plot(xpoints, ypoints);
+plt.show();
 ```
 
 ### CLI Usage
