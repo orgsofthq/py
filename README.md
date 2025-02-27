@@ -5,7 +5,7 @@ A Deno Python wrapper that supports using virtual environments like from `uv`.
 This lets you easily call Python modules from Deno code: in a portable, simple,
 and low setup way.
 
-`@orgsoft/py` is based on
+[`jsr:@orgsoft/py`](https://jsr.io/@orgsoft/py) is based on
 [`jsr:@denosaurs/python`](https://jsr.io/@denosaurs/python) and its native
 Python/C bindings. You can read more about that and further documentation on
 their [GitHub repo](https://github.com/denosaurs/deno_python).
