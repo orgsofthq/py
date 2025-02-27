@@ -1,0 +1,10 @@
+[project]
+name = "orgsoft-py-example"
+version = "0.1.0"
+description = "An example of a simple Python project for use with Deno"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "cowsay>=6.1",
+    "requests>=2.32.3",
+]
