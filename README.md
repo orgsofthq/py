@@ -22,15 +22,15 @@ This is the recommended way to use this module.
 import { getPython } from "jsr:@orgsoft/py";
 const { python } = await getPython();
 
-# Import a module and run a function
+// Import a module and run a function
 const module = await python.import("my_module");
 const result = await module.main();
 console.log(result);
 
-# Run raw python code
+// Run raw python code
 python.run("print('hello world'));
 
-# Continued...
+// Continued...
 const np = python.import("numpy");
 const plt = python.import("matplotlib.pyplot");
 
